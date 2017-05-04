@@ -21,6 +21,14 @@ public class Agreement extends AbstractEntity {
     protected Date date;
 
     @ManyToOne
+    @JoinColumn(name = "person_id")
+    protected Person person;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    protected Car car;
+
+    @ManyToOne
     @JoinColumn(name = "agreement_type_id")
     protected AgreementType agreementType;
 
@@ -48,5 +56,27 @@ public class Agreement extends AbstractEntity {
         this.date = date;
     }
 
+    public Person getPerson() {
+        return person;
+    }
 
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public AgreementType getAgreementType() {
+        return agreementType;
+    }
+
+    public void setAgreementType(AgreementType agreementType) {
+        this.agreementType = agreementType;
+    }
 }
