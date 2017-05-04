@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    
+</head>
+
+<body>
+
+<h2 class="sub-header">Section title</h2>
+<div layout:fragment="content" class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>obraz</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Cena</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1,001</td>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+            <td>sit</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
