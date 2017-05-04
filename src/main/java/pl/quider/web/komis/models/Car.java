@@ -36,6 +36,9 @@ public class Car extends AbstractEntity {
     protected String description;
     @Column
     protected Integer testDrives;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    protected Person owner;
 
     public String getVin() {
         return vin;
@@ -139,5 +142,13 @@ public class Car extends AbstractEntity {
 
     public void setTestDrives(Integer testDrives) {
         this.testDrives = testDrives;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 }
