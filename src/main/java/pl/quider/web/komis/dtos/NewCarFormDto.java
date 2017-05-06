@@ -1,5 +1,6 @@
 package pl.quider.web.komis.dtos;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -7,6 +8,7 @@ import java.math.BigDecimal;
  */
 public class NewCarFormDto {
     private Integer id;
+    @NotNull(message = "Dystans nie może zostać pusty")
     private Integer distance;
     private Integer engince;
     private Integer fuelType;
