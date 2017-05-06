@@ -10,6 +10,7 @@ import pl.quider.web.komis.repositories.AgreementRepository;
 import pl.quider.web.komis.repositories.AgreementTypeRepository;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,9 +30,16 @@ public class OfferService {
      * @return
      */
     public List<CarOfferDto> getReadyToSellCars() {
-        AgreementType purchaseType = agreementTypeRepository.getOne(2); // in table id 3 = purchase
+        AgreementType purchaseType = agreementTypeRepository.getOne(3); // in table id 3 = purchase
         List<Agreement> agreements = agreementRepository.findAllByAgreementType(purchaseType);
-        List<CarOfferDto> collect = agreements.stream().map(OfferService::agreementToSellOffer).collect(Collectors.toList());
+        List<CarOfferDto> purchases = agreements.stream().map(OfferService::agreementToSellOffer).collect(Collectors.toList());
+
+        AgreementType cessionType = agreementTypeRepository.getOne(2); // in table id 2 = cession
+        agreements = agreementRepository.findAllByAgreementType(cessionType);
+        List<CarOfferDto> cessions = agreements.stream().map(OfferService::agreementToSellOffer).collect(Collectors.toList());
+
+        List<CarOfferDto> collect = new ArrayList<>(purchases);
+        collect.addAll(cessions);
 
         return collect;
     }
