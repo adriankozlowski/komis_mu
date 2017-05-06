@@ -1,0 +1,3 @@
+INSERT INTO komis.agreement_types (added, modified, name, removed) VALUES ('2017-05-04 20:48:03', '2017-05-04 20:48:03', 'sell', 0);
+INSERT INTO komis.agreement_types (added, modified, name, removed) VALUES ('2017-05-04 20:48:03', '2017-05-04 20:48:03', 'cession', 0);
+INSERT INTO komis.agreement_types (added, modified, name, removed) VALUES ('2017-05-04 20:48:03', '2017-05-04 20:48:03', 'purchase', 0);

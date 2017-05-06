@@ -1,0 +1,2 @@
+INSERT INTO komis.roles (added, modified, name, removed) VALUES ('2017-05-06 10:39:12', '2017-05-06 10:39:12', 'USER', 0);
+INSERT INTO komis.roles (added, modified, name, removed) VALUES ('2017-05-06 10:39:12', '2017-05-06 10:39:12', 'ADMIN', 0);
