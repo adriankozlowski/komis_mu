@@ -13,6 +13,7 @@ public class CarOfferDto {
     private String model;
     private Integer year;
     private BigDecimal amount;
+    private Integer id;
 
     public void setDistance(Integer distance) {
         this.distance = distance;
@@ -68,5 +69,13 @@ public class CarOfferDto {
 
     public BigDecimal getAmount() {
         return amount;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

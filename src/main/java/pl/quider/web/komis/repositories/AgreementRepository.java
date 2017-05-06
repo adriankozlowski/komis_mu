@@ -16,4 +16,7 @@ import java.util.List;
 public interface AgreementRepository extends JpaRepository<Agreement, Integer> {
     @Query("from Agreement a where a.agreementType = :agreementType")
     List<Agreement> findAllByAgreementType(@Param("agreementType") AgreementType purchaseType);
+
+    @Query("select count(a.id) from Agreement a where a.car.id = :id")
+    Integer countAllByCarId(@Param("id")Integer id);
 }

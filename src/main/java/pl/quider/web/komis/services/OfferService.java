@@ -2,6 +2,7 @@ package pl.quider.web.komis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.quider.web.komis.dtos.AgreementDto;
 import pl.quider.web.komis.dtos.CarOfferDto;
 import pl.quider.web.komis.models.Agreement;
 import pl.quider.web.komis.models.AgreementType;
@@ -12,6 +13,7 @@ import pl.quider.web.komis.repositories.AgreementTypeRepository;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,10 +41,23 @@ public class OfferService {
 
         AgreementType cessionType = agreementTypeRepository.getOne(2); // in table id 2 = cession
         agreements = agreementRepository.findAllByAgreementType(cessionType);
-        List<CarOfferDto> cessions = agreements.stream().map(OfferService::agreementToSellOffer).collect(Collectors.toList());
+        List<CarOfferDto> cessions = agreements
+                .stream()
+                .map(OfferService::agreementToSellOffer)
+                .collect(Collectors.toList());
+
 
         List<CarOfferDto> collect = new ArrayList<>(purchases);
         collect.addAll(cessions);
+        Iterator<CarOfferDto> iterator = collect.iterator();
+        while(iterator.hasNext()){
+            CarOfferDto offer = iterator.next();
+
+            Integer integer = agreementRepository.countAllByCarId(offer.getId());
+            if(!integer.equals(1)){
+                iterator.remove();
+            }
+        }
 
         return collect;
     }
@@ -55,6 +70,7 @@ public class OfferService {
     private static CarOfferDto agreementToSellOffer(Agreement agreement) {
         Car car = agreement.getCar();
         CarOfferDto carOfferDto = new CarOfferDto();
+        carOfferDto.setId(car.getId());
         carOfferDto.setDistance(car.getDistance());
         carOfferDto.setEngince(car.getEngine());
         carOfferDto.setFuelType(car.getFuel().getName());
@@ -80,5 +96,12 @@ public class OfferService {
         invoiceService.createInvoice(saved);
 
         return saved;
+    }
+
+    public List<CarOfferDto> getSoldCars() {
+        AgreementType sellType = agreementTypeRepository.getOne(1); // in table id 3 = sell
+        List<Agreement> allByAgreementType = agreementRepository.findAllByAgreementType(sellType);
+        List<CarOfferDto> purchases = allByAgreementType.stream().map(OfferService::agreementToSellOffer).collect(Collectors.toList());
+        return purchases;
     }
 }

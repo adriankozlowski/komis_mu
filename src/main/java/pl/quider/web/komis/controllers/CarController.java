@@ -7,14 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.quider.web.komis.dtos.CarOfferDto;
 import pl.quider.web.komis.dtos.NewCarFormDto;
-import pl.quider.web.komis.models.Agreement;
 import pl.quider.web.komis.models.Car;
-import pl.quider.web.komis.models.Person;
 import pl.quider.web.komis.repositories.FuelRepository;
 import pl.quider.web.komis.services.CarService;
-import pl.quider.web.komis.services.ImageService;
 import pl.quider.web.komis.services.OfferService;
-import pl.quider.web.komis.services.PersonService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -70,6 +66,14 @@ public class CarController {
         return "cars/add";
     }
 
+    @GetMapping("/sold")
+    public String showSoldList(ModelMap modelMap){
+
+        List<CarOfferDto> agreements = offerService.getSoldCars();
+        modelMap.addAttribute("agreements",agreements);
+
+        return "agreements/list";
+    }
 
 
 }

@@ -14,17 +14,17 @@
         <thead>
         <tr>
             <th>id</th>
-            <th>Marka</th>
-            <th>Model</th>
-            <th>Cena</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Pesel</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="invoice : ${invoices}">
-            <td th:text="${invoice.id}">później</td>
-            <td th:text="${invoice.manufacturer}">Lorem</td>
-            <td th:text="${invoice.model}">ipsum</td>
-            <td th:text="${invoice.amount}">dolor</td>
+        <tr th:each="person : ${persons}">
+            <td th:text="${person.id}">później</td>
+            <td th:text="${person.name}">Lorem</td>
+            <td th:text="${person.surname}">ipsum</td>
+            <td th:text="${person.pesel}">dolor</td>
         </tr>
         </tbody>
     </table>
