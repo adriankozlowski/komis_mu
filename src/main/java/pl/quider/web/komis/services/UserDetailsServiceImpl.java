@@ -1,11 +1,19 @@
 package pl.quider.web.komis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import pl.quider.web.komis.models.Role;
+import pl.quider.web.komis.models.User;
 import pl.quider.web.komis.repositories.UserReposiory;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by adrian on 04.05.17.
@@ -14,10 +22,18 @@ import pl.quider.web.komis.repositories.UserReposiory;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    protected UserReposiory userReposiory;
+    protected UserReposiory userRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        User user = userRepository.findByUsername(username);
+
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        for (Role role : user.getRoles()){
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 }

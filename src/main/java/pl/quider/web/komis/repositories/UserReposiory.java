@@ -9,4 +9,5 @@ import pl.quider.web.komis.models.User;
  */
 @Repository
 public interface UserReposiory extends JpaRepository<User, Integer> {
+    User findByUsername(String username);
 }

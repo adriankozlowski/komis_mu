@@ -20,7 +20,7 @@ public class CarController {
     @Autowired
     private OfferService offerService;
 
-    @GetMapping("/")
+    @GetMapping("/toSell")
     public String showIndex(ModelMap modelMap){
         List<CarOfferDto> list =  offerService.getReadyToSellCars();
         modelMap.addAttribute("carList", list );
