@@ -58,6 +58,17 @@
 
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-md-2">
+                    <label for="image">Skrzynia biegów</label>
+                </div>
+                <div class="col-md-4">
+                    <select th:field="*{transmission}">
+                        <option th:each="transmission: ${transmissions}" th:text="${transmission.name}" th:value="${transmission.id}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
                     <label for="image">Marka:</label>
                 </div>
                 <div class="col-md-4">

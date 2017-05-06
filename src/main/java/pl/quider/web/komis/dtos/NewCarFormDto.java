@@ -14,6 +14,7 @@ public class NewCarFormDto {
     private Integer fuelType;
     private String manufacturer;
     private String model;
+    private Integer transmission;
     private Integer year;
     private BigDecimal amount;
     private Integer agreementTypeId;
@@ -21,6 +22,14 @@ public class NewCarFormDto {
     private String surname;
     private String pesel;
     private String address;
+
+    public Integer getTransmission() {
+        return transmission;
+    }
+
+    public void setTransmission(Integer transmission) {
+        this.transmission = transmission;
+    }
 
     public void setDistance(Integer distance) {
         this.distance = distance;

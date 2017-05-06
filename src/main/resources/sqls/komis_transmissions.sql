@@ -1,0 +1,2 @@
+INSERT INTO komis.transmissions (added, modified, name, removed) VALUES ('2017-05-07 01:15:33', '2017-05-07 01:15:33', 'manualna', 0);
+INSERT INTO komis.transmissions (added, modified, name, removed) VALUES ('2017-05-07 01:15:33', '2017-05-07 01:15:33', 'automatyczna', 0);
