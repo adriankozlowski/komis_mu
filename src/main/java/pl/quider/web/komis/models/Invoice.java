@@ -14,4 +14,12 @@ public class Invoice extends AbstractEntity{
     @OneToOne
     @JoinColumn(name = "agreement_id")
     protected Agreement agreement;
+
+    public Agreement getAgreement() {
+        return agreement;
+    }
+
+    public void setAgreement(Agreement agreement) {
+        this.agreement = agreement;
+    }
 }

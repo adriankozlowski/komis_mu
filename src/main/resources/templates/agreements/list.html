@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    
+</head>
+
+<body>
+
+<h2 class="sub-header">Section title</h2>
+<div layout:fragment="content" class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Cena</th>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="agreement : ${agreements}">
+            <td th:text="${agreement.id}">później</td>
+            <td th:text="${agreement.manufacturer}">Lorem</td>
+            <td th:text="${agreement.model}">ipsum</td>
+            <td th:text="${agreement.amount}">dolor</td>
+            <td th:text="${agreement.name}">dolor</td>
+            <td th:text="${agreement.surname}">dolor</td>
+            <td th:text="${agreement.date}">dolor</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

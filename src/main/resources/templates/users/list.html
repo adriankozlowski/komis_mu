@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    
+</head>
+
+<body>
+
+<h2 class="sub-header">Section title</h2>
+<div layout:fragment="content" class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>email</th>
+            <th>Data modyfikacji</th>
+            <th>Data dodania</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}">później</td>
+            <td th:text="${user.username}">Lorem</td>
+            <td th:text="${user.email}">ipsum</td>
+            <td th:text="${user.modified}">dolor</td>
+            <td th:text="${user.added}">dolor</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

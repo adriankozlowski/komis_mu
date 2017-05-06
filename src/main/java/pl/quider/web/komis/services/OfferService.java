@@ -9,6 +9,7 @@ import pl.quider.web.komis.models.Car;
 import pl.quider.web.komis.repositories.AgreementRepository;
 import pl.quider.web.komis.repositories.AgreementTypeRepository;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,8 @@ public class OfferService {
     private AgreementRepository agreementRepository;
     @Autowired
     private AgreementTypeRepository agreementTypeRepository;
+    @Autowired
+    private InvoiceService invoiceService;
 
     /**
      *
@@ -62,6 +65,7 @@ public class OfferService {
         return carOfferDto;
     }
 
+    @Transactional
     public Agreement createOffer(Car car, Integer agreementTypeId, BigDecimal amount) {
         AgreementType one = agreementTypeRepository.findOne(agreementTypeId);
         Agreement agreement = new Agreement();
@@ -71,7 +75,10 @@ public class OfferService {
         agreement.setContent("Sprzedaz samochodu :D:D:D:D:D:DD:");
         agreement.setPerson(agreement.getCar().getOwner());
 
-        agreementRepository.save(agreement);
-        return null;
+        Agreement saved = agreementRepository.save(agreement);
+
+        invoiceService.createInvoice(saved);
+
+        return saved;
     }
 }

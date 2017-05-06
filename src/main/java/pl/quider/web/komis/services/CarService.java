@@ -42,6 +42,7 @@ public class CarService {
         car.setModel(carDto.getModel());
         car.setOwner(person);
         car.setFuel(fuelType);
+
         carRepository.save(car);
 
         return car;
