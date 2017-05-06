@@ -36,7 +36,7 @@ public class Car extends AbstractEntity {
     protected String description;
     @Column
     protected Integer testDrives;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     protected Person owner;
 

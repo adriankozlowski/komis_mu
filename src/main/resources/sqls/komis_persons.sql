@@ -1,0 +1,3 @@
+INSERT INTO komis.persons (dtype, added, modified, address, name, nip, number, pesel, surname, hire_date, user_id) VALUES ('Person', '2017-05-06 13:49:09', '2017-05-06 13:49:09', 'Radosna', 'Adrian', null, null, '91091309143', 'Kozlowski', null, null);
+INSERT INTO komis.persons (dtype, added, modified, address, name, nip, number, pesel, surname, hire_date, user_id) VALUES ('Person', '2017-05-06 13:49:50', '2017-05-06 13:49:50', 'Radosna', 'Adrian', null, null, '91091309143', 'Kozlowski', null, null);
+INSERT INTO komis.persons (dtype, added, modified, address, name, nip, number, pesel, surname, hire_date, user_id) VALUES ('Person', '2017-05-06 13:52:54', '2017-05-06 13:52:54', 'Radosna', 'Adrian', null, null, '91091309143', 'Kozlowski', null, null);

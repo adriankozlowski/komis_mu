@@ -1,0 +1,3 @@
+INSERT INTO komis.agreements (added, modified, amount, content, date, agreement_type_id, car_id, person_id) VALUES ('2017-05-06 13:52:54', '2017-05-06 14:15:00', 80000.00, 'Sprzedaz samochodu :D:D:D:D:D:DD:', null, 3, 1, 3);
+INSERT INTO komis.agreements (added, modified, amount, content, date, agreement_type_id, car_id, person_id) VALUES ('2017-05-06 13:52:54', '2017-05-06 14:15:00', 99999.00, 'Sprzedaz samochodu :D:D:D:D:D:DD:', null, 3, 2, 3);
+INSERT INTO komis.agreements (added, modified, amount, content, date, agreement_type_id, car_id, person_id) VALUES ('2017-05-06 13:52:54', '2017-05-06 14:15:00', 58742.00, 'Sprzedaz samochodu :D:D:D:D:D:DD:', null, 3, 3, 3);

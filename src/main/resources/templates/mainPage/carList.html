@@ -13,7 +13,6 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>#</th>
             <th>obraz</th>
             <th>Marka</th>
             <th>Model</th>
@@ -21,12 +20,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1,001</td>
-            <td>Lorem</td>
-            <td>ipsum</td>
-            <td>dolor</td>
-            <td>sit</td>
+        <tr th:each="car : ${carList}">
+            <td>później</td>
+            <td th:text="${car.manufacturer}">Lorem</td>
+            <td th:text="${car.model}">ipsum</td>
+            <td th:text="${car.amount}">dolor</td>
         </tr>
         </tbody>
     </table>
