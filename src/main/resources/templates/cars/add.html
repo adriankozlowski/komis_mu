@@ -17,7 +17,7 @@
                     <label for="image">obraz:</label>
                 </div>
                 <div class="col-md-4">
-                    <input  type="file" id="image" name="image"/>
+                    <input  type="file" id="image" personName="image"/>
                 </div>
             </div>
 
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-md-4">
                     <select th:field="*{fuelType}">
-                        <option th:each="fuel: ${fuels}" th:text="${fuel.name}" th:value="${fuel.id}"></option>
+                        <option th:each="fuel: ${fuels}" th:text="${fuel.personName}" th:value="${fuel.id}"></option>
                     </select>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-md-4">
                     <select th:field="*{transmission}">
-                        <option th:each="transmission: ${transmissions}" th:text="${transmission.name}" th:value="${transmission.id}"></option>
+                        <option th:each="transmission: ${transmissions}" th:text="${transmission.personName}" th:value="${transmission.id}"></option>
                     </select>
                 </div>
             </div>
@@ -70,10 +70,10 @@
                     <label for="image">Marka:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{manufacturer}"/>
+                    <input class="form-control" type="text" th:field="*{carManufacturer}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}" class="text-danger"></label>-->
+                    <!--<label th:if="${#fields.hasErrocarManufacturerurer')}" th:errorscarManufacturerurer}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -82,10 +82,10 @@
                     <label for="image">Model:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{model}"/>
+                    <input class="form-control" type="text" th:field="*{carModel}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="text-danger"></label>-->
+                    <!--<label th:if="${#fields.hasErrocarModelodel')}" th:errorscarModelodel}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -127,10 +127,10 @@
                     <label for="image">imię</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{name}"/>
+                    <input class="form-control" type="text" th:field="*{personName}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></label>-->
+                    <!--<label th:if="${#fields.hasErropersonNamename')}" th:errorspersonNamename}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -139,10 +139,10 @@
                     <label for="image">Nazwisko</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{surname}"/>
+                    <input class="form-control" type="text" th:field="*{personSurname}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></label>-->
+                    <!--<label th:if="${#fields.hasErropersonSurnamename')}" th:errorspersonSurnamename}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -170,7 +170,7 @@
                 <!--</div>-->
             </div>
 
-            <input type="hidden" th:value="${agreementTypeId}" name="agreementTypeId"/>
+            <input type="hidden" th:value="${agreementTypeId}" personName="agreementTypeId"/>
 
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-md-2">

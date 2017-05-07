@@ -1,6 +1,8 @@
 package pl.quider.web.komis.services;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.quider.web.komis.dtos.CarOfferDto;
 import pl.quider.web.komis.models.Agreement;
@@ -8,6 +10,7 @@ import pl.quider.web.komis.models.AgreementType;
 import pl.quider.web.komis.models.Car;
 import pl.quider.web.komis.repositories.AgreementRepository;
 import pl.quider.web.komis.repositories.AgreementTypeRepository;
+import pl.quider.web.komis.repositories.CarRepository;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
@@ -29,6 +32,8 @@ public class OfferService {
     private AgreementTypeRepository agreementTypeRepository;
     @Autowired
     private InvoiceService invoiceService;
+    @Autowired
+    private CarRepository carRepository;
 
     /**
      *
@@ -104,5 +109,23 @@ public class OfferService {
         List<Agreement> allByAgreementType = agreementRepository.findAllByAgreementType(sellType);
         List<CarOfferDto> purchases = allByAgreementType.stream().map(OfferService::agreementToSellOffer).collect(Collectors.toList());
         return purchases;
+    }
+
+    /**
+     *
+     * @param carId
+     * @return
+     */
+    @Transactional
+    public Agreement sellCar(Integer carId) {
+        Agreement toSell = agreementRepository.findAgreementByCarId(carId);
+        ModelMapper modelMapper = new ModelMapper();
+        Agreement agreement = modelMapper.map(toSell, Agreement.class);
+        agreement.setAgreementType(agreementTypeRepository.findOne(1));//because 1 is sell
+        agreement.setId(null); //because map modeler put here previous ID.
+        agreement.setDate(new Date());//because date has changed
+        agreement = agreementRepository.save(agreement);
+        invoiceService.createInvoice(agreement);
+        return agreement;
     }
 }

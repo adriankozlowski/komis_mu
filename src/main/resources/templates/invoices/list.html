@@ -22,8 +22,8 @@
         <tbody>
         <tr th:each="invoice : ${invoices}">
             <td th:text="${invoice.id}">później</td>
-            <td th:text="${invoice.manufacturer}">Lorem</td>
-            <td th:text="${invoice.model}">ipsum</td>
+            <td th:text="${invoice.carManufacturer}">Lorem</td>
+            <td th:text="${invoice.carModel}">ipsum</td>
             <td th:text="${invoice.amount}">dolor</td>
         </tr>
         </tbody>

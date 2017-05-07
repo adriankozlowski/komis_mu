@@ -8,22 +8,24 @@ import java.util.Date;
  */
 public class AgreementDto {
     private BigDecimal amount;
-    private String manufacturer;
-    private String model; String name;
-    private String surname;
+    private String carManufacturer;
+    private String carModel;
+    private String personName;
+    private String personSurname;
     private Date date;
     private Integer id;
+    protected String agreementTypeName;
 
     public AgreementDto() {
 
     }
 
-    public AgreementDto(Integer id, BigDecimal amount, String manufacturer, String model, String name, String surname, Date date) {
+    public AgreementDto(Integer id, BigDecimal amount, String carManufacturer, String carModel, String personName, String personSurname, Date date) {
         this.amount = amount;
-        this.manufacturer = manufacturer;
-        this.model = model;
-        this.name = name;
-        this.surname = surname;
+        this.carManufacturer = carManufacturer;
+        this.carModel = carModel;
+        this.personName = personName;
+        this.personSurname = personSurname;
         this.date = date;
         this.id = id;
     }
@@ -44,36 +46,36 @@ public class AgreementDto {
         this.amount = amount;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getCarManufacturer() {
+        return carManufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setCarManufacturer(String carManufacturer) {
+        this.carManufacturer = carManufacturer;
     }
 
-    public String getModel() {
-        return model;
+    public String getCarModel() {
+        return carModel;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
     }
 
-    public String getName() {
-        return name;
+    public String getPersonName() {
+        return personName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPersonName(String personName) {
+        this.personName = personName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getPersonSurname() {
+        return personSurname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setPersonSurname(String personSurname) {
+        this.personSurname = personSurname;
     }
 
     public Date getDate() {
@@ -82,5 +84,13 @@ public class AgreementDto {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getAgreementTypeName() {
+        return agreementTypeName;
+    }
+
+    public void setAgreementTypeName(String agreementTypeName) {
+        this.agreementTypeName = agreementTypeName;
     }
 }

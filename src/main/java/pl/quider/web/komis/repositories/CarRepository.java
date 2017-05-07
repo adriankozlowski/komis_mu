@@ -9,7 +9,6 @@ import pl.quider.web.komis.models.Car;
 /**
  * Created by adrian on 04.05.17.
  */
-@Repository
 public interface CarRepository extends JpaRepository<Car, Integer> {
 
     @Query("select count(c.id) from Car c where c.vin = :vin")

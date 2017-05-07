@@ -1,5 +1,6 @@
 package pl.quider.web.komis.services;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.quider.web.komis.dtos.AgreementDto;
@@ -22,15 +23,8 @@ public class AgreementService {
     }
 
     private  AgreementDto mapAgreements(Agreement agreement) {
-        AgreementDto agreementDto = new AgreementDto(
-                agreement.getId(),
-                agreement.getAmount(),
-                agreement.getCar().getManufacturer(),
-                agreement.getCar().getModel(),
-                agreement.getPerson().getName(),
-                agreement.getPerson().getSurname(),
-                agreement.getDate()
-        );
+        ModelMapper modelMapper = new ModelMapper();
+        AgreementDto agreementDto = modelMapper.map(agreement, AgreementDto.class);
         return agreementDto;
     }
 }

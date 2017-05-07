@@ -13,15 +13,17 @@
     <div class="container" style="width: auto">
         <form th:action="@{/person/add}" method="post" th:object="${personDto}">
 
+            <input type="hidden" th:field="*{id}" />
+
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-md-2">
                     <label for="image">Imię:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" placeholder="Imię" type="text" th:field="*{name}" />
+                    <input class="form-control" placeholder="Imię" type="text" th:field="*{personName}" />
                 </div>
                 <div class="col-md-6">
-                    <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></label>
+                    <label th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}" class="text-danger"></label>
                 </div>
             </div>
 
@@ -30,10 +32,10 @@
                     <label for="image">Nazwisko:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{surname}"/>
+                    <input class="form-control" type="text" th:field="*{personSurname}"/>
                 </div>
                 <div class="col-md-6">
-                    <label th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></label>
+                    <label th:if="${#fields.hasErrors('personSurname')}" th:errors="*{personSurname}" class="text-danger"></label>
                 </div>
             </div>
 
@@ -63,9 +65,9 @@
 
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-md-2">
-                    <label for="address">Marka:</label>
+                    <label for="address">Adres:</label>
                 </div>
-                < <div class="col-md-4">
+                <div class="col-md-4">
                 <input class="form-control" id="address" type="text" th:field="*{address}"/>
             </div>
                 <div class="col-md-6">

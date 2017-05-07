@@ -20,17 +20,19 @@
             <th>Imie</th>
             <th>Nazwisko</th>
             <th>Data</th>
+            <th>Typ umowy</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="agreement : ${agreements}">
             <td th:text="${agreement.id}">później</td>
-            <td th:text="${agreement.manufacturer}">Lorem</td>
-            <td th:text="${agreement.model}">ipsum</td>
+            <td th:text="${agreement.carManufacturer}">Lorem</td>
+            <td th:text="${agreement.carModel}">ipsum</td>
             <td th:text="${agreement.amount}">dolor</td>
-            <td th:text="${agreement.name}">dolor</td>
-            <td th:text="${agreement.surname}">dolor</td>
+            <td th:text="${agreement.personName}">dolor</td>
+            <td th:text="${agreement.personSurname}">dolor</td>
             <td th:text="${agreement.date}">dolor</td>
+            <td th:text="${agreement.agreementTypeName}">dolor</td>
         </tr>
         </tbody>
     </table>

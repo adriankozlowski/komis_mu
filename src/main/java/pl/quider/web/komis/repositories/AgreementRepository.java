@@ -23,4 +23,7 @@ public interface AgreementRepository extends JpaRepository<Agreement, Integer> {
 
     @Query("from Agreement a where (a.agreementType.id = 2 or a.agreementType.id = 3) and a.car = :car")
     Agreement findReadyToBuyCarById(@Param("car") Car car);
+
+    @Query("from Agreement a where (a.agreementType.id = 2 or a.agreementType.id = 3) and a.car.id = :car")
+    Agreement findAgreementByCarId(Integer carId);
 }

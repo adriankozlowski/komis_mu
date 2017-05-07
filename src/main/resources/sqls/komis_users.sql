@@ -1,1 +1,1 @@
-INSERT INTO komis.users (added, modified, email, password, username, person_id) VALUES ('2017-05-06 10:27:09', '2017-05-06 10:27:09', null, '$2a$10$JrMl2z3E9OSGqGy89n2sKeb4w1TQXvw4z/ykhzGJjnjg2VwuOfJ9W', 'admin', null);
+INSERT INTO komis.users (added, modified, email, password, username, person_id) VALUES ('2017-05-06 10:27:09', '2017-05-07 14:27:56', 'adres@email.com', '$2a$10$JrMl2z3E9OSGqGy89n2sKeb4w1TQXvw4z/ykhzGJjnjg2VwuOfJ9W', 'admin', null);

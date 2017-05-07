@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-md-10">
                             <!--<select th:field="*{transmission}">-->
-                            <!--<option th:each="transmission: ${transmissions}" th:text="${transmission.name}" th:value="${transmission.id}"></option>-->
+                            <!--<option th:each="transmission: ${transmissions}" th:text="${transmisspersonNamename}" th:value="${transmission.id}"></option>-->
                             <!--</select>-->
                         </div>
                     </div>
@@ -64,8 +64,8 @@
                             <label for="image">Marka:</label>
                         </div>
                         <div class="col-md-10">
-                            <input class="form-control" type="text" th:field="*{manufacturer}"/>
-                            <label th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}"
+                            <input class="form-control" type="text" th:field="*{carManufacturer}"/>
+                            <label th:if="${#fields.hasErrors('carManufacturer')}" th:errors="*{carManufacturer}"
                                    class="text-danger"></label>
                         </div>
                     </div>
@@ -75,8 +75,8 @@
                             <label for="image">Model:</label>
                         </div>
                         <div class="col-md-10">
-                            <input class="form-control" type="text" th:field="*{model}"/>
-                            <label th:if="${#fields.hasErrors('model')}" th:errors="*{model}"
+                            <input class="form-control" type="text" th:field="*{carModel}"/>
+                            <label th:if="${#fields.hasErrors('carModel')}" th:errors="*{carModel}"
                                    class="text-danger"></label>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                 </div>
             </div>
 
-            <input type="hidden" th:value="${agreementTypeId}" name="agreementTypeId"/>
+            <input type="hidden" th:value="${agreementTypeId}" personName="agreementTypeId"/>
 
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-md-2">

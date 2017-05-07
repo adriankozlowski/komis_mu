@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.quider.web.komis.dtos.CarOfferDto;
 import pl.quider.web.komis.dtos.NewCarFormDto;
+import pl.quider.web.komis.models.Agreement;
 import pl.quider.web.komis.models.Car;
 import pl.quider.web.komis.repositories.FuelRepository;
 import pl.quider.web.komis.repositories.TransmissionRepository;
@@ -155,6 +156,18 @@ public class CarController {
     public String showDetails(@PathVariable Integer id, ModelMap modelMap) {
         modelMap.addAttribute("carDto", carService.getCarDetails(id));
         return "cars/details";
+    }
+
+    @GetMapping("/sell")
+    public String sellCar(@RequestParam(value = "carId", required = false) Integer carId, ModelMap modelMap) {
+
+        if(carId == null || carId <= 0){
+            throw new RuntimeException("nieprawidłowy id samochodu do sprzedania");
+        }
+
+        Agreement agreement = offerService.sellCar(carId);
+
+        return AGREEMENTS_LIST;
     }
 
 }

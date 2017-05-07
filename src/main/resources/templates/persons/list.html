@@ -22,8 +22,8 @@
         <tbody>
         <tr th:each="person : ${persons}">
             <td ><a th:href="@{'/person/details/'+${person.id}}" th:text="${person.id}"></a></td>
-            <td><a th:href="@{'/person/details/'+${person.id}}" th:text="${person.name}"></a></td>
-            <td ><a th:href="@{'/person/details/'+${person.id}}" th:text="${person.surname}"></a></td>
+            <td><a th:href="@{'/person/details/'+${person.id}}" th:text="${person.personName}"></a></td>
+            <td ><a th:href="@{'/person/details/'+${person.id}}" th:text="${person.personSurname}"></a></td>
             <td ><a th:href="@{'/person/details/'+${person.id}}" th:text="${person.pesel}"></a></td>
         </tr>
         </tbody>
