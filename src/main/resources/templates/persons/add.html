@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+
+</head>
+
+<body>
+
+<h2 class="sub-header">Section title</h2>
+<div layout:fragment="content" class="table-responsive">
+    <div class="container" style="width: auto">
+        <form th:action="@{/person/add}" method="post" th:object="${personDto}">
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Imię:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" placeholder="Imię" type="text" th:field="*{name}" />
+                </div>
+                <div class="col-md-6">
+                    <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></label>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Nazwisko:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{surname}"/>
+                </div>
+                <div class="col-md-6">
+                    <label th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></label>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="pesel">PESEL*:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" id="pesel" type="text" th:field="*{pesel}"/>
+                </div>
+                <div class="col-md-6">
+                    <label th:if="${#fields.hasErrors('pesel')}" th:errors="*{pesel}" class="text-danger"></label>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="nip">NIP</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" id="nip" type="text" th:field="*{nip}"/>
+                </div>
+                <div class="col-md-6">
+                    <label th:if="${#fields.hasErrors('nip')}" th:errors="*{nip}" class="text-danger"></label>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="address">Marka:</label>
+                </div>
+                < <div class="col-md-4">
+                <input class="form-control" id="address" type="text" th:field="*{address}"/>
+            </div>
+                <div class="col-md-6">
+                    <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></label>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Zaakceptuj:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="btn btn-primary" type="submit" value="Zaakceptuj"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

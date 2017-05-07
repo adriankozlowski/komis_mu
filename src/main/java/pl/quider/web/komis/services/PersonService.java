@@ -1,5 +1,6 @@
 package pl.quider.web.komis.services;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.quider.web.komis.dtos.NewCarFormDto;
@@ -59,5 +60,20 @@ public class PersonService {
                 person.getId()
         );
         return personDto;
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public PersonDto getPerson(Integer id) {
+        if(id == null || id <= 0){
+            throw new IllegalArgumentException("id musi być liczbą całkowitą dodatnią");
+        }
+        Person one = personRepository.findOne(id);
+        ModelMapper modelMapper = new ModelMapper();
+        PersonDto map = modelMapper.map(one, PersonDto.class);
+        return map;
     }
 }
