@@ -11,7 +11,7 @@ public class NewCarFormDto {
     @NotNull(message = "Dystans nie może zostać pusty")
     private Integer distance;
     @NotNull(message = "Pojemność silnika nie może być pusty")
-    private BigDecimal engince;
+    private BigDecimal engine;
     private Integer fuelType;
     @NotNull(message = "Producent musi być wypełniony")
     private String manufacturer;
@@ -48,12 +48,12 @@ public class NewCarFormDto {
         return distance;
     }
 
-    public void setEngince(BigDecimal engince) {
-        this.engince = engince;
+    public void setEngine(BigDecimal engine) {
+        this.engine = engine;
     }
 
-    public BigDecimal getEngince() {
-        return engince;
+    public BigDecimal getEngine() {
+        return engine;
     }
 
     public void setFuelType(Integer fuelType) {

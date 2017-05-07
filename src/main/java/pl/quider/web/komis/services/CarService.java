@@ -45,7 +45,7 @@ public class CarService {
         Car car = new Car();
         car.setDistance(carDto.getDistance());
         car.setYear(carDto.getYear());
-        car.setEngine(carDto.getEngince());
+        car.setEngine(carDto.getEngine());
         car.setManufacturer(carDto.getManufacturer());
         car.setModel(carDto.getModel());
         car.setOwner(person);

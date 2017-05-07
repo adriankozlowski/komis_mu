@@ -26,4 +26,16 @@ public class PersonController {
         modelMap.addAttribute("persons", personDtoList);
         return "persons/list";
     }
+
+    @GetMapping("/details")
+    public String showPersonDetails(ModelMap modelMap){
+        //todo person details
+        return "persons/details";
+    }
+
+    @GetMapping("/add")
+    public String addPerson(ModelMap modelMap){
+        //todo add person
+        return "persons/add";
+    }
 }
