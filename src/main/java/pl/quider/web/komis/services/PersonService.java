@@ -19,23 +19,28 @@ public class PersonService {
     private PersonRepository personRepository;
 
     /**
-     *
      * @param carDto
      * @return
      */
     public Person add(NewCarFormDto carDto) {
-        Person person = new Person();
-        person.setName(carDto.getName());
-        person.setSurname(carDto.getSurname());
-        person.setAddress(carDto.getAddress());
-        person.setPesel(carDto.getPesel());
+        Person byPesel = personRepository.findByPesel(carDto.getPesel());
+        Person person = null;
+        if (byPesel == null) {
+            person = new Person();
+            person.setName(carDto.getName());
+            person.setSurname(carDto.getSurname());
+            person.setAddress(carDto.getAddress());
+            person.setPesel(carDto.getPesel());
+            person = personRepository.save(person);
 
-        Person save = personRepository.save(person);
-        return save;
+        } else {
+            person = byPesel;
+        }
+
+        return person;
     }
 
     /**
-     *
      * @return
      */
     public List<PersonDto> getAllPersons() {
@@ -43,7 +48,6 @@ public class PersonService {
     }
 
     /**
-     *
      * @param person
      * @return
      */

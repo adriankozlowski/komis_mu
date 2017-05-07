@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+
+</head>
+
+<body>
+
+<h2 class="sub-header">Section title</h2>
+<div layout:fragment="content" class="table-responsive">
+    <div class="container" style="width: auto">
+        <form th:action="@{/car/add}" method="post" enctype="multipart/form-data" th:object="${carDto}">
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">obraz:</label>
+                </div>
+                <div class="col-md-4">
+                    <input  type="file" id="image" name="image"/>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">przebieg:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{distance}" />
+                </div>
+                <div class="col-md-6">
+                    <label th:if="${#fields.hasErrors('distance')}" th:errors="*{distance}" class="text-danger"></label>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">silnik:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{engince}"/>
+                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<label th:if="${#fields.hasErrors('engince')}" th:errors="*{engince}" class="text-danger"></label>-->
+                <!--</div>-->
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">paliwo:</label>
+                </div>
+                <div class="col-md-4">
+                    <select th:field="*{fuelType}">
+                        <option th:each="fuel: ${fuels}" th:text="${fuel.name}" th:value="${fuel.id}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Skrzynia biegów</label>
+                </div>
+                <div class="col-md-4">
+                    <select th:field="*{transmission}">
+                        <option th:each="transmission: ${transmissions}" th:text="${transmission.name}" th:value="${transmission.id}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Marka:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{manufacturer}"/>
+                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<label th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}" class="text-danger"></label>-->
+                <!--</div>-->
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Model:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{model}"/>
+                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<label th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="text-danger"></label>-->
+                <!--</div>-->
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">rok produkcji:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{year}"/>
+                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<label th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="text-danger"></label>-->
+                <!--</div>-->
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Proponowana cena:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{amount}"/>
+                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<label th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="text-danger"></label>-->
+                <!--</div>-->
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Umowa:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" disabled="disabled" type="text" th:value="${agreementType}"/>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">imię</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{name}"/>
+                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></label>-->
+                <!--</div>-->
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Nazwisko</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{surname}"/>
+                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<label th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></label>-->
+                <!--</div>-->
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Pesel</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{pesel}"/>
+                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<label th:if="${#fields.hasErrors('pesel')}" th:errors="*{pesel}" class="text-danger"></label>-->
+                <!--</div>-->
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">adres</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" type="text" th:field="*{address}"/>
+                </div>
+                <!--<div class="col-md-6">-->
+                    <!--<label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></label>-->
+                <!--</div>-->
+            </div>
+
+            <input type="hidden" th:value="${agreementTypeId}" name="agreementTypeId"/>
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Zaakceptuj:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="btn btn-primary" type="submit" value="Zaakceptuj"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

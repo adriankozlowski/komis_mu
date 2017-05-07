@@ -13,6 +13,7 @@ import pl.quider.web.komis.repositories.AgreementTypeRepository;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -88,6 +89,7 @@ public class OfferService {
         agreement.setAgreementType(one);
         agreement.setAmount(amount);
         agreement.setCar(car);
+        agreement.setDate(new Date());
         agreement.setContent("Sprzedaz samochodu :D:D:D:D:D:DD:");
         agreement.setPerson(agreement.getCar().getOwner());
 

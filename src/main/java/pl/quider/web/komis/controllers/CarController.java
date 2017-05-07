@@ -1,5 +1,7 @@
 package pl.quider.web.komis.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,14 @@ import pl.quider.web.komis.models.Car;
 import pl.quider.web.komis.repositories.FuelRepository;
 import pl.quider.web.komis.repositories.TransmissionRepository;
 import pl.quider.web.komis.services.CarService;
+import pl.quider.web.komis.services.ImageService;
 import pl.quider.web.komis.services.OfferService;
 
+import javax.imageio.stream.FileImageOutputStream;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -25,6 +31,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/car")
 public class CarController {
+
+    Logger log = LoggerFactory.getLogger(CarController.class);
 
     public static final String SELL = "Sprzedaż";
     public static final String CESSION = "Cesja";
@@ -41,6 +49,7 @@ public class CarController {
     public static final String AGREEMENT_TYPE_ID = "agreementTypeId";
     public static final String FUELS = "fuels";
     public static final String AGREEMENT_TYPE = "agreementType";
+
     @Autowired
     private OfferService offerService;
 
@@ -54,8 +63,11 @@ public class CarController {
     @Autowired
     private TransmissionRepository transmissionRepository;
 
+    @Autowired
+    private ImageService imageService;
+
+
     /**
-     *
      * @param modelMap
      * @return
      */
@@ -67,7 +79,6 @@ public class CarController {
     }
 
     /**
-     *
      * @param modelMap
      * @return
      */
@@ -79,7 +90,6 @@ public class CarController {
     }
 
     /**
-     *
      * @param modelMap
      * @param newCarFormDto
      */
@@ -92,7 +102,6 @@ public class CarController {
     }
 
     /**
-     *
      * @param file
      * @param carDto
      * @param bindingResult
@@ -104,20 +113,21 @@ public class CarController {
     public String saveCar(@RequestPart(value = "image", required = false) MultipartFile file,
                           @Valid @ModelAttribute("carDto") NewCarFormDto carDto,
                           BindingResult bindingResult,
-                          ModelMap modelMap){
+                          ModelMap modelMap) {
         if (bindingResult.hasErrors()) {
             modelMap.addAttribute(carDto);
-            this.newCarDropdowns(modelMap, carDto, carDto.getAgreementTypeId()==3? SELL : CESSION,carDto.getAgreementTypeId());
+            this.newCarDropdowns(modelMap, carDto, carDto.getAgreementTypeId() == 3 ? SELL : CESSION, carDto.getAgreementTypeId());
             return CARS_ADD;
         }
 
         Car car = carService.saveCar(carDto);
+        imageService.saveImage(file,car);
+
         offerService.createOffer(car, carDto.getAgreementTypeId(), carDto.getAmount());
         return REDIRECT_TO_ROOT;
     }
 
     /**
-     *
      * @param modelMap
      * @return
      */
@@ -129,7 +139,6 @@ public class CarController {
     }
 
     /**
-     *
      * @param modelMap
      * @return
      */
@@ -142,5 +151,10 @@ public class CarController {
         return AGREEMENTS_LIST;
     }
 
+    @GetMapping("/details/{id}")
+    public String showDetails(@PathVariable Integer id, ModelMap modelMap) {
+        modelMap.addAttribute("carDto", carService.getCarDetails(id));
+        return "cars/details";
+    }
 
 }

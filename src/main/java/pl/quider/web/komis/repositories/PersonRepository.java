@@ -9,4 +9,6 @@ import pl.quider.web.komis.models.Person;
  */
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Integer>{
+
+    Person findByPesel(String pesel);
 }

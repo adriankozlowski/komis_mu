@@ -10,17 +10,26 @@ public class NewCarFormDto {
     private Integer id;
     @NotNull(message = "Dystans nie może zostać pusty")
     private Integer distance;
-    private Integer engince;
+    @NotNull(message = "Pojemność silnika nie może być pusty")
+    private BigDecimal engince;
     private Integer fuelType;
+    @NotNull(message = "Producent musi być wypełniony")
     private String manufacturer;
+    @NotNull(message = "Musisz wpisać model")
     private String model;
     private Integer transmission;
+    @NotNull(message = "Rok produkcji musi być wpisany")
     private Integer year;
+    @NotNull(message = "Wpisz proponowaną cenę")
     private BigDecimal amount;
     private Integer agreementTypeId;
+    @NotNull(message = "Imię nie może być puste")
     private String name;
+    @NotNull(message = "Nazwisko nie może być puste")
     private String surname;
+    @NotNull(message = "PESEL jest wymagany")
     private String pesel;
+    @NotNull(message = "Adres jest wymagany")
     private String address;
 
     public Integer getTransmission() {
@@ -39,11 +48,11 @@ public class NewCarFormDto {
         return distance;
     }
 
-    public void setEngince(Integer engince) {
+    public void setEngince(BigDecimal engince) {
         this.engince = engince;
     }
 
-    public Integer getEngince() {
+    public BigDecimal getEngince() {
         return engince;
     }
 

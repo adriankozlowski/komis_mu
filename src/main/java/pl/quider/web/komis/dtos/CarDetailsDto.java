@@ -1,46 +1,30 @@
-package pl.quider.web.komis.models;
+package pl.quider.web.komis.dtos;
+
+import pl.quider.web.komis.models.Fuel;
+import pl.quider.web.komis.models.Person;
+import pl.quider.web.komis.models.Transmission;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 /**
- * Created by adrian on 04.05.17.
+ * Created by adrian on 07.05.17.
  */
-@Entity
-@Table(name = "cars")
-public class Car extends AbstractEntity {
-    @Column
+
+public class CarDetailsDto {
     protected String vin;
-    @Column
     protected Integer year;
-    @Column
     protected String manufacturer;
-    @Column
     protected String model;
-    @Column
     protected String libilityNumber;
-    @Column
     protected String registrationNumber;
-    @OneToOne
-    @JoinColumn(name = "fuel_id")
     protected Fuel fuel;
-    @Column
     protected Integer distance;
-    @Column
-    protected BigDecimal engine;
-    @Column
+    protected Integer engine;
     protected Integer power;
-    @OneToOne
-    @JoinColumn(name = "transmission_id")
     protected Transmission transmission;
-    @Column
     protected String description;
-    @Column
     protected Integer testDrives;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id")
     protected Person owner;
-    @Column
     protected String image;
 
     public String getVin() {
@@ -107,11 +91,11 @@ public class Car extends AbstractEntity {
         this.distance = distance;
     }
 
-    public BigDecimal getEngine() {
+    public Integer getEngine() {
         return engine;
     }
 
-    public void setEngine(BigDecimal engine) {
+    public void setEngine(Integer engine) {
         this.engine = engine;
     }
 

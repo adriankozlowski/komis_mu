@@ -21,7 +21,7 @@
         </thead>
         <tbody>
         <tr th:each="car : ${carList}">
-            <td>później</td>
+            <td><img width="100" height="100" th:src="'/images/'+${car.id}+'.jpg'"/></td>
             <td th:text="${car.manufacturer}">Lorem</td>
             <td th:text="${car.model}">ipsum</td>
             <td th:text="${car.amount}">dolor</td>

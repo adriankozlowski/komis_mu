@@ -1,8 +1,10 @@
 package pl.quider.web.komis.services;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import pl.quider.web.komis.dtos.CarDetailsDto;
 import pl.quider.web.komis.dtos.NewCarFormDto;
 import pl.quider.web.komis.models.Car;
 import pl.quider.web.komis.models.Fuel;
@@ -51,8 +53,16 @@ public class CarService {
         car.setFuel(fuelType);
         car.setTransmission(transmission);
 
+
         carRepository.save(car);
 
         return car;
+    }
+
+    public CarDetailsDto getCarDetails(Integer id) {
+        Car car = carRepository.findOne(id);
+        ModelMapper modelMapper = new ModelMapper();
+        CarDetailsDto carDto = modelMapper.map(car, CarDetailsDto.class);
+        return carDto;
     }
 }
