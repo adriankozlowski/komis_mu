@@ -6,13 +6,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.quider.web.komis.dtos.CarDetailsDto;
 import pl.quider.web.komis.dtos.NewCarFormDto;
-import pl.quider.web.komis.models.Car;
-import pl.quider.web.komis.models.Fuel;
-import pl.quider.web.komis.models.Person;
-import pl.quider.web.komis.models.Transmission;
-import pl.quider.web.komis.repositories.CarRepository;
-import pl.quider.web.komis.repositories.FuelRepository;
-import pl.quider.web.komis.repositories.TransmissionRepository;
+import pl.quider.web.komis.models.*;
+import pl.quider.web.komis.repositories.*;
 
 import javax.transaction.Transactional;
 
@@ -28,10 +23,14 @@ public class CarService {
     private PersonService personService;
     @Autowired
     private FuelRepository fuelRepository;
+
     @Qualifier("transmissionRepository")
     @Autowired
     private TransmissionRepository transmissionRepository;
-
+    @Autowired
+    private OfferService offerService;
+    @Autowired
+    private AgreementRepository agreementRepository;
 
     /**
      *
@@ -53,16 +52,24 @@ public class CarService {
         car.setFuel(fuelType);
         car.setTransmission(transmission);
 
-
         carRepository.save(car);
 
         return car;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public CarDetailsDto getCarDetails(Integer id) {
         Car car = carRepository.findOne(id);
+        Agreement agreement = agreementRepository.findReadyToBuyCarById(car);
         ModelMapper modelMapper = new ModelMapper();
         CarDetailsDto carDto = modelMapper.map(car, CarDetailsDto.class);
+        carDto.setAmount(agreement.getAmount());
+        carDto.setAgreementTypeId(agreement.getAgreementType().getId());
+        carDto.setAgreementTypeName(agreement.getAgreementType().getName());
         return carDto;
     }
 }

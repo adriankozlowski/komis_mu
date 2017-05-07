@@ -2,7 +2,6 @@ package pl.quider.web.komis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.quider.web.komis.dtos.AgreementDto;
 import pl.quider.web.komis.dtos.CarOfferDto;
 import pl.quider.web.komis.models.Agreement;
 import pl.quider.web.komis.models.AgreementType;
@@ -73,7 +72,7 @@ public class OfferService {
         CarOfferDto carOfferDto = new CarOfferDto();
         carOfferDto.setId(car.getId());
         carOfferDto.setDistance(car.getDistance());
-        carOfferDto.setEngince(car.getEngine());
+        carOfferDto.setEngine(car.getEngine());
         carOfferDto.setFuelType(car.getFuel().getName());
         carOfferDto.setManufacturer(car.getManufacturer());
         carOfferDto.setModel(car.getModel());

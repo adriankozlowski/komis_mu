@@ -7,7 +7,7 @@ import java.math.BigDecimal;
  */
 public class CarOfferDto {
     private Integer distance;
-    private Integer engince;
+    private BigDecimal engine;
     private String fuelType;
     private String manufacturer;
     private String model;
@@ -23,12 +23,12 @@ public class CarOfferDto {
         return distance;
     }
 
-    public void setEngince(Integer engince) {
-        this.engince = engince;
+    public void setEngine(BigDecimal engine) {
+        this.engine = engine;
     }
 
-    public Integer getEngince() {
-        return engince;
+    public BigDecimal getEngine() {
+        return engine;
     }
 
     public void setFuelType(String fuelType) {
