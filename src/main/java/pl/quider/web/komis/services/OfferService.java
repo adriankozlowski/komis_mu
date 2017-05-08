@@ -119,11 +119,12 @@ public class OfferService {
     @Transactional
     public Agreement sellCar(Integer carId) {
         Agreement toSell = agreementRepository.findAgreementByCarId(carId);
-        ModelMapper modelMapper = new ModelMapper();
-        Agreement agreement = modelMapper.map(toSell, Agreement.class);
+        Agreement agreement = new Agreement();
         agreement.setAgreementType(agreementTypeRepository.findOne(1));//because 1 is sell
-        agreement.setId(null); //because map modeler put here previous ID.
         agreement.setDate(new Date());//because date has changed
+        agreement.setPerson(toSell.getPerson());
+        agreement.setAmount(toSell.getAmount());
+        agreement.setCar(toSell.getCar());
         agreement = agreementRepository.save(agreement);
         invoiceService.createInvoice(agreement);
         return agreement;

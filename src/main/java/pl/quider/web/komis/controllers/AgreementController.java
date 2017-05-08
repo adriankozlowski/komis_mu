@@ -24,7 +24,6 @@ public class AgreementController {
 
     @GetMapping("/list")
     public String showList(ModelMap modelMap){
-
         List<AgreementDto> agreements = agreementService.getAllAgreements();
         modelMap.addAttribute("agreements",agreements);
 

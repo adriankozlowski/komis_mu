@@ -64,8 +64,8 @@
                             <label for="image">Marka:</label>
                         </div>
                         <div class="col-md-10">
-                            <input class="form-control" type="text" th:field="*{carManufacturer}"/>
-                            <label th:if="${#fields.hasErrors('carManufacturer')}" th:errors="*{carManufacturer}"
+                            <input class="form-control" type="text" th:field="*{manufacturer}"/>
+                            <label th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}"
                                    class="text-danger"></label>
                         </div>
                     </div>
@@ -75,8 +75,8 @@
                             <label for="image">Model:</label>
                         </div>
                         <div class="col-md-10">
-                            <input class="form-control" type="text" th:field="*{carModel}"/>
-                            <label th:if="${#fields.hasErrors('carModel')}" th:errors="*{carModel}"
+                            <input class="form-control" type="text" th:field="*{model}"/>
+                            <label th:if="${#fields.hasErrors('model')}" th:errors="*{model}"
                                    class="text-danger"></label>
                         </div>
                     </div>

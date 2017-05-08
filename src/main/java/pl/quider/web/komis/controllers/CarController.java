@@ -147,9 +147,9 @@ public class CarController {
     public String showSoldList(ModelMap modelMap) {
 
         List<CarOfferDto> agreements = offerService.getSoldCars();
-        modelMap.addAttribute(AGREEMENTS, agreements);
+        modelMap.addAttribute(CAR_LIST, agreements);
 
-        return AGREEMENTS_LIST;
+        return MAIN_PAGE_CAR_LIST;
     }
 
     @GetMapping("/details/{id}")

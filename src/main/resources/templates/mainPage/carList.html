@@ -22,8 +22,8 @@
         <tbody>
         <tr th:each="car : ${carList}">
             <td><img width="100" height="100" th:src="'/images/'+${car.id}+'.jpg'"/></td>
-            <td > <a th:href="@{'/car/details/'+${car.id}}" th:text="${car.carManufacturer}"></a></td>
-            <td th:text="${car.carModel}"></td>
+            <td > <a th:href="@{'/car/details/'+${car.id}}" th:text="${car.manufacturer}"></a></td>
+            <td th:text="${car.model}"></td>
             <td th:text="${car.amount}"></td>
         </tr>
         </tbody>
