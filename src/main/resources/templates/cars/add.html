@@ -17,7 +17,7 @@
                     <label for="image">obraz:</label>
                 </div>
                 <div class="col-md-4">
-                    <input  type="file" id="image" personName="image"/>
+                    <input type="file" id="image" personName="image"/>
                 </div>
             </div>
 
@@ -26,7 +26,7 @@
                     <label for="image">przebieg:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{distance}" />
+                    <input class="form-control" type="text" th:field="*{distance}"/>
                 </div>
                 <div class="col-md-6">
                     <label th:if="${#fields.hasErrors('distance')}" th:errors="*{distance}" class="text-danger"></label>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-md-4">
                     <select th:field="*{fuelType}">
-                        <option th:each="fuel: ${fuels}" th:text="${fuel.personName}" th:value="${fuel.id}"></option>
+                        <option th:each="fuel: ${fuels}" th:text="${fuel.name}" th:value="${fuel.id}"></option>
                     </select>
                 </div>
             </div>
@@ -60,7 +60,8 @@
                 </div>
                 <div class="col-md-4">
                     <select th:field="*{transmission}">
-                        <option th:each="transmission: ${transmissions}" th:text="${transmission.personName}" th:value="${transmission.id}"></option>
+                        <option th:each="transmission: ${transmissions}" th:text="${transmission.name}"
+                                th:value="${transmission.id}"></option>
                     </select>
                 </div>
             </div>
@@ -70,10 +71,10 @@
                     <label for="image">Marka:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{carManufacturer}"/>
+                    <input class="form-control" type="text" th:field="*{manufacturer}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrocarManufacturerurer')}" th:errorscarManufacturerurer}" class="text-danger"></label>-->
+                <!--<label th:if="${#fields.hasErrors('manufacturerurer')}" th:errors('manufacturerurer}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -82,10 +83,8 @@
                     <label for="image">Model:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{carModel}"/>
-                </div>
-                <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrocarModelodel')}" th:errorscarModelodel}" class="text-danger"></label>-->
+                    <input class="form-control" type="text" th:field="*{model}"/>
+                <!--<label th:if="${#fields.hasErrors('modelodel')}" th:errors('model}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -97,7 +96,7 @@
                     <input class="form-control" type="text" th:field="*{year}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="text-danger"></label>-->
+                <!--<label th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -109,7 +108,7 @@
                     <input class="form-control" type="text" th:field="*{amount}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="text-danger"></label>-->
+                <!--<label th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -127,10 +126,10 @@
                     <label for="image">imię</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{personName}"/>
+                    <input class="form-control" type="text" th:field="*{name}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErropersonNamename')}" th:errorspersonNamename}" class="text-danger"></label>-->
+                <!--<label th:if="${#fields.hasErropersonNamename')}" th:errorspersonNamename}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -139,11 +138,10 @@
                     <label for="image">Nazwisko</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{personSurname}"/>
+                    <input class="form-control" type="text" th:field="*{surname}"/>
+                    <label th:if="${#fields.hasErrors('surnamename')}" th:errors="*{surnamename}"
+                    class="text-danger"></label>
                 </div>
-                <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErropersonSurnamename')}" th:errorspersonSurnamename}" class="text-danger"></label>-->
-                <!--</div>-->
             </div>
 
             <div class="row" style="margin-bottom: 20px;">
@@ -154,7 +152,7 @@
                     <input class="form-control" type="text" th:field="*{pesel}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrors('pesel')}" th:errors="*{pesel}" class="text-danger"></label>-->
+                <!--<label th:if="${#fields.hasErrors('pesel')}" th:errors="*{pesel}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 
@@ -166,7 +164,7 @@
                     <input class="form-control" type="text" th:field="*{address}"/>
                 </div>
                 <!--<div class="col-md-6">-->
-                    <!--<label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></label>-->
+                <!--<label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></label>-->
                 <!--</div>-->
             </div>
 

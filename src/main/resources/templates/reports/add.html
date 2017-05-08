@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+
+</head>
+
+<body>
+
+<h2 class="sub-header">Section title</h2>
+<div layout:fragment="content" class="table-responsive">
+    <div class="container" style="width: auto">
+        <form th:action="@{/car/add}" method="post" enctype="multipart/form-data" th:object="${carDto}">
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Raport</label>
+                </div>
+                <div class="col-md-4">
+                    <select th:field="*{agreement}">
+                        <option th:each="agreement: ${agreements}" th:text="${agreement.name}"
+                                th:value="${agreement.id}"></option>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <label for="image">Zaakceptuj:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="btn btn-primary" type="submit" value="Wygeneruj"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

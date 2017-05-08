@@ -20,10 +20,10 @@
                     <label for="image">Imię:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" placeholder="Imię" type="text" th:field="*{personName}" />
+                    <input class="form-control" placeholder="Imię" type="text" th:field="*{name}" />
                 </div>
                 <div class="col-md-6">
-                    <label th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}" class="text-danger"></label>
+                    <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></label>
                 </div>
             </div>
 
@@ -32,10 +32,10 @@
                     <label for="image">Nazwisko:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" th:field="*{personSurname}"/>
+                    <input class="form-control" type="text" th:field="*{surname}"/>
                 </div>
                 <div class="col-md-6">
-                    <label th:if="${#fields.hasErrors('personSurname')}" th:errors="*{personSurname}" class="text-danger"></label>
+                    <label th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger"></label>
                 </div>
             </div>
 
